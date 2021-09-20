@@ -75,7 +75,8 @@ default: cout << "Введите числа от 1 до 4"; break;
 }
 return 0;
 }
-Прим
+
+
 // функция загрузки файла
 bool LoadFileToRead() {
 PhoneList chel;
