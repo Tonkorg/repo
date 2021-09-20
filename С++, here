@@ -47,9 +47,77 @@ cout << left << setw(8) << chel.Phone << setw(20) << chel.FIO << setw(21) << che
 fout.close();
 }
 
+// функция поиска по телефону
+void SearchByPhone() {
+4
+char buffNumber[7];
+cout << "Введите номер для поиска: ";
+cin >> buffNumber;
+PhoneList chel;
+ifstream fout;
+fout.open(name, ios::binary);
+fout.seekg(0, ios::end);
+int size = fout.tellg();
+size = size / sizeof(PhoneList);
+fout.seekg(0, ios::beg);
+int l = 0, r = size - 1, mid;
+bool flag = false;
+while ((l <= r) && (!flag)) {
+mid = (l + r) / 2;
+fout.seekg(mid * sizeof(PhoneList));
+fout.read((char*)&chel, sizeof(PhoneList));
+if (atoi(chel.Phone) == atoi(buffNumber)) {
+flag = true;
+cout << left << setw(8) << chel.Phone << setw(20) << chel.FIO << setw(21) <<
+chel.street << setw(10) << chel.House << setw(10) << chel.Flat << endl;
+fout.close();
+return;
+}
+if (atoi(chel.Phone) > atoi(buffNumber)) {
+r = mid - 1;
+}
+else {
+l = mid + 1;
+}
+}
+cout << "Try again" << endl;
+ReadFromFile();
+fout.close();
+}
 
 
-
+// фунция поиска по фамилии
+void SearchByFIO() {
+char buffStr[20];
+cout << "Введите фамилию из списка: ";
+cin >> buffStr;
+PhoneList chel;
+ifstream fout;
+fout.open(name, ios::binary);
+fout.seekg(0, ios::end);
+int size = fout.tellg();
+size = size / sizeof(PhoneList);
+fout.seekg(0, ios::beg);
+bool flag = false;
+char surname[20];
+for (int i = 0; i < size; i++) {
+fout.seekg(i * sizeof(PhoneList));
+fout.read((char*)&chel, sizeof(PhoneList));
+string FIO(chel.FIO);
+FIO = FIO.substr(0, FIO.find(' '));
+strcpy_s(surname, FIO.c_str());
+if (strcmp(surname, buffStr) == 0) {
+flag = true;
+cout << left << setw(8) << chel.Phone << setw(20) << chel.FIO << setw(21) <<
+chel.street << setw(10) << chel.House << setw(10) << chel.Flat << endl;
+}
+}
+if (!flag) {
+cout << "Try again" << endl;
+ReadFromFile();
+}
+fout.close();
+}
 
 
 int main() {
