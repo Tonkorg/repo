@@ -12,7 +12,42 @@ bool LoadFileToRead();
 void ReadFromFile(PhoneList *chel);
 void SerchByFIO();
 string name;
-  
+ // функция загрузки файла
+bool LoadFileToRead() {
+PhoneList chel;
+cout << "Введите имя файла: ";
+cin >> name;
+ifstream fout;
+fout.open(name, ios::binary | ios::in);
+if (!fout.is_open() || fout.peek() == EOF) {
+cout << "Ошибка открытия файла или он пуст!" << endl;
+return false;
+}
+else {
+while (fout.peek() != EOF) {
+fout.read((char*)&chel, sizeof(PhoneList));
+}
+cout << "Запись гуд)" << endl;
+}
+fout.close();
+return true;
+}
+// функция вывода содержимого файла
+void ReadFromFile() {
+ifstream fout;
+PhoneList chel;
+fout.open(name, ios::binary | ios:: in);
+cout << left << setw(8) << "Телефон" << setw(20) << "ФИО" << setw(21) << "Улица" << setw(8) <<
+"Дом" << setw(10) << "Этаж" << endl <<
+"_____________________________________________________________" << endl;
+while(fout.peek() != EOF){
+fout.read((char*)&chel, sizeof(PhoneList));
+cout << left << setw(8) << chel.Phone << setw(20) << chel.FIO << setw(21) << chel.street
+<< setw(10) << chel.House << setw(10) << chel.Flat << endl;
+}
+fout.close();
+}
+
   
   
   
