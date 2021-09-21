@@ -1,7 +1,7 @@
 Практика по работе с репозириторием 
 
 
-[![GitHub Анурага stats](https://github-readme-stats.vercel.app/api?username=Tonkorg&show_icons=true&theme=gruvbox&text_color=##000000)](https://github.com/anuraghazra/github-readme-stats)
+[![GitHub Анурага stats](https://github-readme-stats.vercel.app/api?username=Tonkorg&show_icons=true&theme=gruvbox&text_color=#000000)](https://github.com/anuraghazra/github-readme-stats)
 
 [![GitHub Анурага stats](https://github-readme-stats.vercel.app/api?username=ihunter-win&show_icons=true&theme=gruvbox&text_color=#08d80c)](https://github.com/anuraghazra/github-readme-stats)
 
