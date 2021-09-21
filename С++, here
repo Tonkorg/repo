@@ -49,7 +49,6 @@ fout.close();
 
 // функция поиска по телефону
 void SearchByPhone() {
-4
 char buffNumber[7];
 cout << "Введите номер для поиска: ";
 cin >> buffNumber;
